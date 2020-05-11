@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<filter>
+		<filter-name>SetChartEncoding</filter-name>
+		<filter-class>com.yxw.util.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SetChartEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 配置让img标签的src属性可以为 中文 -->
+	<filter>
+		<filter-name>urlFilter</filter-name>
+		<filter-class>com.yxw.util.UrlFilter</filter-class>
+		<init-param>
+			<param-name>DEFAULT_URI_ENCODE</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>urlFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ImgServlet2</servlet-name>
+    <servlet-class>com.yxw.servlet.ImgServlet2</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>signServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.signServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.yxw.htservlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ScenicServlet</servlet-name>
+    <servlet-class>com.yxw.htservlet.ScenicServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DoLogin</servlet-name>
+    <servlet-class>com.yxw.htservlet.DoLogin</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QiantaiServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QiantaiServlet</servlet-class>
+  </servlet>
+  
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeleteGoodsServlet</servlet-name>
+    <servlet-class>com.yxw.htservlet.DeleteGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeleteTravelNoteServlet</servlet-name>
+    <servlet-class>com.yxw.htservlet.DeleteTravelNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QueryAllGoodsServlet</servlet-name>
+    <servlet-class>com.yxw.htservlet.QueryAllGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QueryAllTravelNotesServlet</servlet-name>
+    <servlet-class>com.yxw.htservlet.QueryAllTravelNotesServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SaveGoodsServlet</servlet-name>
+    <servlet-class>com.yxw.htservlet.SaveGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateGoodsServlert</servlet-name>
+    <servlet-class>com.yxw.htservlet.UpdateGoodsServlert</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Submit_orderServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.Submit_orderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Confirm_order_scenicServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.Confirm_order_scenicServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ScenicOrderPayServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.ScenicOrderPayServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ScenicOrderTypeServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.ScenicOrderTypeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CheckSOMasServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.CheckSOMasServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ScenicOrderServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.ScenicOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>PayScenicOrderServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.PayScenicOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeleteSOrderServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.DeleteSOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AddDelServlet</servlet-name>
+    <servlet-class>com.yxw.dao.AddDelServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>BuyServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.BuyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DanjiesuanServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.DanjiesuanServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>JiesuanServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.JiesuanServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>OrderDelServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.OrderDelServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QrServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QrServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShopcaraddServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.ShopcaraddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShopDeleteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.ShopDeleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.ShServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>StepServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.StepServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SubmitServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.SubmitServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>typeServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.typeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ZfServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.ZfServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QianQueryAllGoodsServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QianQueryAllGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QueryNoteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QueryNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SaveNoteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.SaveNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryContentOfNoteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QueryContentOfNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SaveCommentServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.SaveCommentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SaveCollectionServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.SaveCollectionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryCollectionServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QueryCollectionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteCollectionServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.DeleteCollectionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryNoteByUserIdServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QueryNoteByUserIdServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryCommentByNoServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.QueryCommentByNoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteNoteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.DeleteNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>XiugaiNoteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.XiugaiNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateNoteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.UpdateNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SaveXiugaiNoteServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.SaveXiugaiNoteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteCommentServlet</servlet-name>
+    <servlet-class>com.yxw.servlet.DeleteCommentServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>ImgServlet2</servlet-name>
+    <url-pattern>/ImgServlet2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>signServlet</servlet-name>
+    <url-pattern>/signServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScenicServlet</servlet-name>
+    <url-pattern>/ScenicServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DoLogin</servlet-name>
+    <url-pattern>/DoLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QiantaiServlet</servlet-name>
+    <url-pattern>/QiantaiServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DeleteGoodsServlet</servlet-name>
+    <url-pattern>/deleteGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteTravelNoteServlet</servlet-name>
+    <url-pattern>/deleteTravelNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryAllGoodsServlet</servlet-name>
+    <url-pattern>/queryAllGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryAllTravelNotesServlet</servlet-name>
+    <url-pattern>/queryAllTravelNotesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveGoodsServlet</servlet-name>
+    <url-pattern>/saveGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateGoodsServlert</servlet-name>
+    <url-pattern>/updateGoodsServlert</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Submit_orderServlet</servlet-name>
+    <url-pattern>/Submit_orderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Confirm_order_scenicServlet</servlet-name>
+    <url-pattern>/Confirm_order_scenicServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScenicOrderPayServlet</servlet-name>
+    <url-pattern>/ScenicOrderPayServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScenicOrderTypeServlet</servlet-name>
+    <url-pattern>/ScenicOrderTypeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckSOMasServlet</servlet-name>
+    <url-pattern>/CheckSOMasServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScenicOrderServlet</servlet-name>
+    <url-pattern>/ScenicOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PayScenicOrderServlet</servlet-name>
+    <url-pattern>/PayScenicOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteSOrderServlet</servlet-name>
+    <url-pattern>/DeleteSOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddDelServlet</servlet-name>
+    <url-pattern>/AddDelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BuyServlet</servlet-name>
+    <url-pattern>/BuyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DanjiesuanServlet</servlet-name>
+    <url-pattern>/DanjiesuanServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JiesuanServlet</servlet-name>
+    <url-pattern>/JiesuanServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderDelServlet</servlet-name>
+    <url-pattern>/OrderDelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QrServlet</servlet-name>
+    <url-pattern>/QrServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShopcaraddServlet</servlet-name>
+    <url-pattern>/ShopcaraddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShopDeleteServlet</servlet-name>
+    <url-pattern>/ShopDeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShServlet</servlet-name>
+    <url-pattern>/ShServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StepServlet</servlet-name>
+    <url-pattern>/StepServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SubmitServlet</servlet-name>
+    <url-pattern>/SubmitServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>typeServlet</servlet-name>
+    <url-pattern>/typeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ZfServlet</servlet-name>
+    <url-pattern>/ZfServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QianQueryAllGoodsServlet</servlet-name>
+    <url-pattern>/QianQueryAllGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryNoteServlet</servlet-name>
+    <url-pattern>/QueryNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveNoteServlet</servlet-name>
+    <url-pattern>/SaveNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryContentOfNoteServlet</servlet-name>
+    <url-pattern>/queryContentOfNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveCommentServlet</servlet-name>
+    <url-pattern>/saveCommentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveCollectionServlet</servlet-name>
+    <url-pattern>/SaveCollectionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryCollectionServlet</servlet-name>
+    <url-pattern>/QueryCollectionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteCollectionServlet</servlet-name>
+    <url-pattern>/DeleteCollectionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryNoteByUserIdServlet</servlet-name>
+    <url-pattern>/QueryNoteByUserIdServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryCommentByNoServlet</servlet-name>
+    <url-pattern>/QueryCommentByNoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteNoteServlet</servlet-name>
+    <url-pattern>/DeleteNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>XiugaiNoteServlet</servlet-name>
+    <url-pattern>/XiugaiNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateNoteServlet</servlet-name>
+    <url-pattern>/UpdateNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveXiugaiNoteServlet</servlet-name>
+    <url-pattern>/SaveXiugaiNoteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteCommentServlet</servlet-name>
+    <url-pattern>/DeleteCommentServlet</url-pattern>
+  </servlet-mapping>
+  
+ 
+  
+  <welcome-file-list>
+    <welcome-file>QiantaiServlet</welcome-file>
+  </welcome-file-list>
+</web-app>

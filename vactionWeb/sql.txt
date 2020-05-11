@@ -1,0 +1,199 @@
+
+--创建用户 vaction
+create user vaction identified by 123456
+
+--oracle不提供自动增长列 identity(1,1),oracle五类约束(主外键 非空 唯一 check)
+
+1.管理员表(编号,登录名，密码，手机号)
+create sequence seq_admin_ano start with 1 increment by 1
+create table tv_admin(
+  ano number primary key  ,
+  aname varchar2(50) not null,
+  apsw varchar2(20) not null,
+  amobile varchar2(11) not null
+)
+
+2.游客表(编号，昵称，密码，性别，头像，个性签名，积分)  应该再加一个 注册时间 （昵称当联系人使用）
+create sequence seq_user_uno start with 1 increment by 1
+create table tv_user(
+  uno number primary key,
+  uname varchar2(50) unique,
+  upw varchar2(20) not null,
+  usex varchar2(10) check(usex='男' or usex='女' or usex='保密'),
+  utxPath varchar2(100),
+  usignature varchar2(200),
+  upoint number
+)
+
+3.收获地址表(常用联系人表)(编号，游客编号,联系人名称，手机号，地址，邮编，是否默认)
+create sequence seq_contact_cno start with 1 increment by 1
+create table tv_contact(
+  cno number primary key,
+  cuno number references tv_user(uno),
+  cname varchar2(50) not null,
+  cmobile varchar2(11) not null,
+  caddress varchar2(100) not null,
+  cpostcard varchar2(6),
+  cdefault varchar2(2) check(cdefault in ('是','否'))
+)
+
+4.游记表(编号,作者编号,内容，发布时间，发布封面,点赞数，收藏数，是否已发表,标题) --是否已发表:已发表 草稿
+create sequence seq_note_nno start with 1 increment by 1
+create table tv_note(
+  nno number primary key,
+  nuno number references tv_user(uno),
+  ncontent varchar2(200),
+  nsendtime varchar2(50) not null,
+  nsendfmPath varchar2(100),
+  nlikecount number,
+  ncollectcount number,
+  nsend varchar2(2) check(nsend in ('是','否')),
+  ntitle varchar2(100)
+)
+
+5.收藏表(编号，游客编号，游记编号，收藏时间)
+create sequence seq_collection_cno start with 1 increment by 1
+create table tv_collection(
+  cno number primary key,
+  cuno number references tv_user(uno),
+  cnno number references tv_note(nno),
+  cdate varchar2(50) 
+)
+
+--只有 商品 设置了 添加购物车
+
+6.商品表(编号,名称,产地,价格,已成交量，购买可得积分数，商品主图，商品详情图,商品类别)
+create sequence seq_goods_gno start with 1 increment by 1
+create table tv_goods(
+  gno number primary key,
+  gname varchar2(100) not null,
+  gplace varchar2(100),
+  gprice number(5,1),
+  gdealcount number,
+  gpoint number,
+  gheadphotopath varchar2(100),
+  gdetailphotopath varchar2(100),
+  gtype varchar2(100)
+)
+*****已经建了商品表，就写 alter语句再添加一下这个 商品主图列 ，商品详情图列
+alter table tv_goods
+add gheadphotopath varchar2(100)
+
+alter table tv_goods
+add gdetailphotopath varchar2(100)
+
+*************************新加的商品图片表
+7.商品图片表(编号，商品编号,图片1，图片2，图片3,图片4,图片5)
+create sequence seq_goodphoto_gpno start with 1 increment by 1
+create table tv_goodphoto(
+  gpno number primary key,
+  gpgno number references tv_goods(gno),
+  gppath1 varchar2(50),
+  gppath2 varchar2(50),
+  gppath3 varchar2(50),
+  gppath4 varchar2(50),
+  gppath5 varchar2(50)
+)
+
+8.商品订单表(编号，买家编号，总价，购买日期)
+create sequence seq_goodorder_gono start with 1 increment by 1
+create table tv_goodorder(
+  gono number primary key,
+  gouno number references tv_user(uno),
+  goprice number(5,1),
+  godate varchar2(50)
+)
+
+9.订单明细表(编号，订单编号，物品编号，数量，单价，支付金额，支付方式，收货地址编号,支付状态)
+create sequence seq_orderdetail_odno start with 1 increment by 1
+create table tv_orderdetail(
+  odno number primary key,
+  odgono number references tv_goodorder(gono),
+  odgno number references tv_goods(gno),
+  odcount number,
+  odprice number(5,1),
+  odpayprice number(5,1),
+  odpaymethod varchar2(50),
+  odcno number references tv_contact(cno),
+  odtype varchar2(20) check(odtype in ('已付款','未付款'))
+)
+*****已经建了订单明细表，就写 alter语句再添加一下这个 支付状态列 
+alter table tv_orderdetail
+add odtype varchar2(20) check(odtype in ('已付款','未付款'))
+
+10.购物车表(编号，买家编号，物品编号，数量，总价) --物品编号：商品表编号
+create sequence seq_shopcar_sno start with 1 increment by 1
+create table tv_shopcar(
+  sno number primary key,
+  suno number references tv_user(uno),
+  sgno number references tv_goods(gno),
+  scount number,
+  sprice number(5,1)
+)
+
+11.景区表(编号，名称，景区头像，背景图片，文字介绍，咨询电话，开放时间，详细地址，价格)
+create sequence seq_scenic_sno start with 1 increment by 1
+create table tv_scenic(
+  sno number primary key,
+  sname varchar2(50) not null,
+  sheadpath varchar2(50),
+  sbgpath varchar2(100),
+  scontent varchar2(1000),
+  smobile varchar2(20),
+  sopendate varchar2(50),
+  saddress varchar2(50),
+  sprice number(5,1)
+)
+insert into tv_scenic values(seq_scenic_sno.nextval,'龙潭大峡谷','myImage/y1.jpg','myImage/ltdxg.jpg',
+'首先要去的就是芙蓉楼，据说此处是唐朝诗人王昌龄游玩会客之所。在清朝时期，又是黔阳本地才子佳人聚集之地据说此处是唐朝诗人王昌龄游玩会客之所。据说此处是唐朝诗人王昌龄游玩会客之所。千唐志斋藏有历代书画大家郑板桥、董其昌、米芾、王铎及近人吴昌硕、于右任、康有为等所作书画石刻，皆为罕见艺术珍品。千唐志斋为我国唐史研究基地，中原旅游线上一颗明珠，是洛阳和新安对外开放的重要窗口，中外专家学者、书画艺术爱好者的必游之地。',
+'0379-65517799','全年','洛阳市孟津县马屯镇',495)
+  						
+12.景区图片表(编号，景区编号，图片1，图片2,图片3，图片4，图片5)
+create sequence seq_scenicphoto_spno start with 1 increment by 1
+create table tv_scenicphoto(
+  spno number primary key,
+  spsno number references tv_scenic(sno),
+  spphoto1 varchar2(100),
+  spphoto2 varchar2(100),
+  spphoto3 varchar2(100),
+  spphoto4 varchar2(100),
+  spphoto5 varchar2(100)
+)
+
+14.景区门票订单表(编号，买家编号，景区编号，数量，单价,联系人姓名，联系人手机,预定时间)
+create sequence seq_scenicorder_sono start with 1 increment by 1
+create table tv_scenicorder(
+  sono number primary key,
+  souno number references tv_user(uno),
+  sosno number references tv_scenic(sno),
+  socount number check(socount>=1),
+  soprice number(5,1),
+  socontactname varchar2(20) not null,
+  socontactmobile varchar2(20) not null,
+  sodate varchar2(50)
+)
+
+15.支付表(编号，景区订单编号，支付金额,支付方式,支付状态)
+create sequence seq_pay_pno start with 1 increment by 1
+create table tv_pay(
+  pno number primary key,
+  psosono number references tv_scenicorder(sono),
+  ppaymoney number(5,1),
+  ppaymethod varchar2(20) check(ppaymethod in ('微信支付','支付宝支付')),
+  ptype varchar2(20) check(ptype in ('已付款','未付款'))
+)
+*****已经建了支付表，就写 alter语句再添加一下这个 支付状态列 
+alter table tv_pay
+add ptype varchar2(20) check(ptype in ('已付款','未付款'))
+
+16.评论表(编号，评论者编号，内容，评论时间，游记编号) 
+create sequence seq_comment_cno start with 1 increment by 1
+create table tv_comment(
+  cno number primary key,
+  cuno number references tv_user(uno),
+  ccontent varchar2(200),
+  cdate varchar2(50),
+  cobjectno number references tv_note(nno)
+)
+
+
